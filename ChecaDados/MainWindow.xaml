@@ -1,0 +1,58 @@
+﻿<Window x:Class="ChecaDados.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ChecaDados - Consulta de CNPJ e Inscrição Estadual" Height="280" Width="600" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="CnpjInput" Width="480" Margin="0,0,10,0" KeyDown="CnpjInput_KeyDown" ToolTip="Digite um CNPJ válido (ex.: 06990590000123)"/>
+            <Button Content="Consultar" Click="Query_Click"/>
+        </StackPanel>
+
+        <TextBlock x:Name="RateLimitText" Grid.Row="1" Margin="0,0,0,10" FontSize="12" Foreground="Gray" Text="Consultas restantes por minuto: 5"/>
+
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="CNPJ:" FontWeight="Bold" Margin="0,0,10,5"/>
+            <TextBox x:Name="CnpjOutput" Grid.Row="0" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Razão Social:" FontWeight="Bold" Margin="0,0,10,5"/>
+            <TextBox x:Name="BusinessNameOutput" Grid.Row="1" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Estado:" FontWeight="Bold" Margin="0,0,10,5"/>
+            <TextBox x:Name="StateOutput" Grid.Row="2" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Inscrição Estadual:" FontWeight="Bold" Margin="0,0,10,5"/>
+            <TextBox x:Name="StateRegistrationOutput" Grid.Row="3" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Consultado em:" FontWeight="Bold" Margin="0,0,10,5"/>
+            <TextBox x:Name="QueryTimeOutput" Grid.Row="4" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap"/>
+        </Grid>
+
+        <Button Grid.Row="3" Content="Limpar" Click="Clear_Click" HorizontalAlignment="Right" Margin="0,10,0,10"/>
+
+        <TextBlock Grid.Row="4" Text="Philipe A M Pedrosa - 2025" HorizontalAlignment="Center" FontSize="10" Foreground="Gray">
+            <TextBlock.ToolTip>
+                <ToolTip Content="Deseja soluções personalizadas para seu negócio? Contate philipepedrosa@outlook.com.br"/>
+            </TextBlock.ToolTip>
+        </TextBlock>
+    </Grid>
+</Window>

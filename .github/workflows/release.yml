@@ -1,0 +1,124 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install MSBuild
+      run: |
+        # Install Chocolatey if not available
+        if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+        }
+        
+        # Install MSBuild
+        choco install microsoft-build-tools --yes --no-progress
+        
+    - name: Check project structure
+      run: |
+        echo "Checking project files..."
+        Get-ChildItem
+        Get-ChildItem ChecaDados\
+        echo "Solution file exists: $(Test-Path ChecaDados.sln)"
+        echo "Project file exists: $(Test-Path ChecaDados/ChecaDados.csproj)"
+        
+    - name: Restore NuGet packages
+      run: |
+        # Clear NuGet cache and build artifacts
+        echo "Clearing NuGet cache and build artifacts..."
+        nuget locals all -clear
+        
+        # Remove build artifacts that might contain old references
+        cd ChecaDados
+        if (Test-Path "obj") { Remove-Item -Recurse -Force "obj" }
+        if (Test-Path "bin") { Remove-Item -Recurse -Force "bin" }
+        cd ..
+        
+        # Restore using solution file
+        echo "Restoring NuGet packages from solution..."
+        nuget restore ChecaDados.sln
+        
+    - name: Build project
+      run: |
+        cd ChecaDados
+        
+        # Find MSBuild after Chocolatey installation
+        echo "Looking for MSBuild..."
+        $msbuildPaths = @(
+          "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe",
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe",
+          "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe",
+          "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe",
+          "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe"
+        )
+        
+        $msbuild = $null
+        foreach ($path in $msbuildPaths) {
+          if (Test-Path $path) {
+            $msbuild = $path
+            echo "Found MSBuild at: $msbuild"
+            break
+          }
+        }
+        
+        if ($msbuild -eq $null) {
+          echo "ERROR: MSBuild not found after installation!"
+          echo "Available Visual Studio installations:"
+          Get-ChildItem "C:\Program Files (x86)\Microsoft Visual Studio" -ErrorAction SilentlyContinue
+          Get-ChildItem "C:\Program Files\Microsoft Visual Studio" -ErrorAction SilentlyContinue
+          exit 1
+        }
+        
+        # Build with detailed output for debugging
+        & $msbuild ChecaDados.csproj /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=bin\Release\ /verbosity:normal /consoleloggerparameters:Summary
+        
+    - name: Verify build output
+      run: |
+        cd ChecaDados
+        echo "Build output contents:"
+        Get-ChildItem bin\Release\
+        
+    - name: Create release package
+      run: |
+        cd ChecaDados
+        # Create a ZIP file with the release
+        Compress-Archive -Path "bin\Release\*" -DestinationPath "ChecaDados-${{ github.ref_name }}.zip" -Force
+        echo "Release package created:"
+        Get-ChildItem ChecaDados-${{ github.ref_name }}.zip
+        
+    - name: Upload release assets
+      uses: actions/upload-artifact@v4
+      with:
+        name: ChecaDados-Release
+        path: ChecaDados/ChecaDados-${{ github.ref_name }}.zip
+        
+  create-release:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download release assets
+      uses: actions/download-artifact@v4
+      with:
+        name: ChecaDados-Release
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: ChecaDados-*.zip
+        generate_release_notes: true
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 

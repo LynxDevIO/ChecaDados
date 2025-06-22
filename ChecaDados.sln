@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChecaDados", "ChecaDados\ChecaDados.csproj", "{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Debug|x64.ActiveCfg = Debug|x64
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Debug|x64.Build.0 = Debug|x64
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Release|x64.ActiveCfg = Release|Any CPU
+		{B6F4A15B-E719-4AAD-ADF3-1598ACAAB255}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADAB8ECC-C0FD-42EA-B2B2-5F2925CA71A2}
+	EndGlobalSection
+EndGlobal

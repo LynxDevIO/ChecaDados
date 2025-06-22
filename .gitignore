@@ -1,0 +1,73 @@
+# Project specific
+ChecaDados/ChecaDados.csv
+*.zip
+*.exe
+
+# Fody files
+FodyWeavers.xml
+FodyWeavers.xsd
+obj/
+bin/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# Publish
+publish/
+
+# Installer files
+*.msi
+*.exe
+*.app
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.vsix
+
+# NuGet
+*.nupkg
+packages/
+# Exclude NuGet restore result
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Others
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# Local test results
+TestResults/
+
+# Auto-generated version file
+version.xml
+
+# Ignore PowerShell history
+*.pshistory
+
+# Ignore publish output
+ChecaDados/publish/ 
