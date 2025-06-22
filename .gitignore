@@ -63,11 +63,11 @@ artifacts/
 # Local test results
 TestResults/
 
-# Auto-generated version file
-version.xml
-
 # Ignore PowerShell history
 *.pshistory
 
 # Ignore publish output
 ChecaDados/publish/ 
+
+USANDO_CREATE_RELEASE.md
+create-release.ps1
