@@ -74,7 +74,7 @@ function Update-VersionXml {
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
     <version>$NewVersion</version>
-    <url>https://github.com/LynxDevIO/ChecaDados/releases/download/v$NewVersion/ChecaDados-$NewVersion.zip</url>
+    <url>https://github.com/LynxDevIO/ChecaDados/releases/download/v$NewVersion/ChecaDados-v$NewVersion.zip</url>
     <changelog>https://github.com/LynxDevIO/ChecaDados/releases</changelog>
     <mandatory>false</mandatory>
 </item>
