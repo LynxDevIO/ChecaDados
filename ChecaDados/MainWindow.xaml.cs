@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
+using AutoUpdaterDotNET;
 
 namespace ChecaDados
 {
@@ -28,6 +29,7 @@ namespace ChecaDados
         public MainWindow()
         {
             InitializeComponent();
+            AutoUpdater.Start("https://raw.githubusercontent.com/LynxDevIO/ChecaDados/main/version.xml");
             Directory.CreateDirectory(Path.GetDirectoryName(CsvPath));
             UpdateRateLimitDisplay();
         }
