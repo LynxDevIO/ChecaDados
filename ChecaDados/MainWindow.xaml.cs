@@ -235,6 +235,16 @@ namespace ChecaDados
                 return csv.GetRecords<CnpjRecord>().ToList();
             }
         }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                "Philipe A M Pedrosa - 2025\n\nDeseja soluções personalizadas para seu negócio?\nContate: philipepedrosa@outlook.com.br",
+                "Informações do Desenvolvedor",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
+        }
     }
 
     public class CnpjRecord

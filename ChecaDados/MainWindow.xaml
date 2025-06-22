@@ -63,11 +63,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Philipe A M Pedrosa - 2025" HorizontalAlignment="Left" FontSize="10" Foreground="Gray">
-                <TextBlock.ToolTip>
-                    <ToolTip Content="Deseja soluções personalizadas para seu negócio? Contate philipepedrosa@outlook.com.br"/>
-                </TextBlock.ToolTip>
-            </TextBlock>
+            <Button x:Name="InfoButton" Grid.Column="0" Content="ℹ" Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" Click="InfoButton_Click" ToolTip="Informações do desenvolvedor" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="8"/>
             <TextBlock x:Name="VersionLabel" Grid.Column="1" Text="Versão" HorizontalAlignment="Right" FontSize="10" Foreground="Gray" Margin="10,0,0,0" />
         </Grid>
     </Grid>
