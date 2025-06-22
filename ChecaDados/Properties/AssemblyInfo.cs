@@ -8,9 +8,9 @@ using System.Windows;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("ChecaDados")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Consulta de CNPJ e Inscrição Estadual")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Philipe A M Pedrosa")]
 [assembly: AssemblyProduct("ChecaDados")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
@@ -48,19 +48,7 @@ using System.Windows;
 //      Número da Versão
 //      Revisão
 //
-[assembly: AssemblyVersion("1.2.1.0")]
-[assembly: AssemblyFileVersion("1.2.1.0")]
-
-
-
-
-
-
-
-
-
-
-
-
-
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: NeutralResourcesLanguage("pt-BR")]
 
