@@ -13,6 +13,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using AutoUpdaterDotNET;
+using System.Reflection;
 
 namespace ChecaDados
 {
@@ -32,6 +33,8 @@ namespace ChecaDados
             AutoUpdater.Start("https://raw.githubusercontent.com/LynxDevIO/ChecaDados/main/version.xml");
             Directory.CreateDirectory(Path.GetDirectoryName(CsvPath));
             UpdateRateLimitDisplay();
+            // Define o texto do rótulo de versão automaticamente
+            VersionLabel.Text = $"Versão {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         private async void Query_Click(object sender, RoutedEventArgs e)

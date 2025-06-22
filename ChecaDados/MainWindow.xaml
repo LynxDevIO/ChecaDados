@@ -49,10 +49,17 @@
 
         <Button Grid.Row="3" Content="Limpar" Click="Clear_Click" HorizontalAlignment="Right" Margin="0,10,0,10"/>
 
-        <TextBlock Grid.Row="4" Text="Philipe A M Pedrosa - 2025" HorizontalAlignment="Center" FontSize="10" Foreground="Gray">
-            <TextBlock.ToolTip>
-                <ToolTip Content="Deseja soluções personalizadas para seu negócio? Contate philipepedrosa@outlook.com.br"/>
-            </TextBlock.ToolTip>
-        </TextBlock>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Philipe A M Pedrosa - 2025" HorizontalAlignment="Left" FontSize="10" Foreground="Gray">
+                <TextBlock.ToolTip>
+                    <ToolTip Content="Deseja soluções personalizadas para seu negócio? Contate philipepedrosa@outlook.com.br"/>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            <TextBlock x:Name="VersionLabel" Grid.Column="1" Text="Versão" HorizontalAlignment="Right" FontSize="10" Foreground="Gray" Margin="10,0,0,0" />
+        </Grid>
     </Grid>
 </Window>
